@@ -22,49 +22,50 @@ public class Main {
         String answerAddCo;
         String answerAddEm;
         String answerAddLink;
-        System.out.println("Would you like to add a company, add an employee, add a link or quit?\nc for company, e for employee, l for link, q for quit");
-        String answerAdd = sc.next();
-        switch (answerAdd) {
-            case "c":
-                do {
-                    System.out.println("Please enter Company ID: ");
-                    int userCoID = sc.nextInt();
-                    System.out.println("Please enter Company Name: ");
-                    String userCoName = sc.next();
-                    userCoName += sc.nextLine();
-                    addNewCompany(userCoID,userCoName);
-                    System.out.println("Would you like to add another company? (y/n)");
-                    answerAddCo = sc.next();
-                } while (answerAddCo.equalsIgnoreCase("y"));
-                break;
-            case "e":
-                do {
-                    System.out.println("Please enter Employee ID: ");
-                    int userEmID = sc.nextInt();
-                    System.out.println("Please enter Employee Name: ");
-                    String userEmployeeName = sc.next();
-                    userEmployeeName += sc.nextLine();
-                    addNewEmployee(userEmID, userEmployeeName);
-                    System.out.println("Would you like to add another employee? (y/n)");
-                    answerAddEm = sc.next();
-                } while (answerAddEm.equalsIgnoreCase("y"));
-                break;
-            case "l":
-                do {
-                    System.out.println("Please enter Link ID: ");
-                    int userLink = sc.nextInt();
-                    System.out.println("Please enter Employee ID: ");
-                    int userLinkEmID = sc.nextInt();
-                    System.out.println("Please enter Company ID: ");
-                    int userLinkCoID = sc.nextInt();
-                    addNewLink(userLink,userLinkEmID,userLinkCoID);
-                    System.out.println("Would you like to add another link? (y/n)");
-                    answerAddLink = sc.next();
-                } while (answerAddLink.equalsIgnoreCase("y"));
-                break;
-            case "q":
-                break;
-        }
+        String answerAdd;
+        do {
+            System.out.println("Would you like to add a company, add an employee, add a link or quit?\nc for company, e for employee, l for link, q for quit");
+            answerAdd = sc.next();
+            switch (answerAdd) {
+                case "c":
+                    do {
+                        System.out.println("Please enter Company ID: ");
+                        int userCoID = sc.nextInt();
+                        System.out.println("Please enter Company Name: ");
+                        String userCoName = sc.next();
+                        userCoName += sc.nextLine();
+                        addNewCompany(userCoID, userCoName);
+                        System.out.println("Would you like to add another company? (y/n)");
+                        answerAddCo = sc.next();
+                    } while (answerAddCo.equalsIgnoreCase("y"));
+                    break;
+                case "e":
+                    do {
+                        System.out.println("Please enter Employee ID: ");
+                        int userEmID = sc.nextInt();
+                        System.out.println("Please enter Employee Name: ");
+                        String userEmployeeName = sc.next();
+                        userEmployeeName += sc.nextLine();
+                        addNewEmployee(userEmID, userEmployeeName);
+                        System.out.println("Would you like to add another employee? (y/n)");
+                        answerAddEm = sc.next();
+                    } while (answerAddEm.equalsIgnoreCase("y"));
+                    break;
+                case "l":
+                    do {
+                        System.out.println("Please enter Link ID: ");
+                        int userLink = sc.nextInt();
+                        System.out.println("Please enter Employee ID: ");
+                        int userLinkEmID = sc.nextInt();
+                        System.out.println("Please enter Company ID: ");
+                        int userLinkCoID = sc.nextInt();
+                        addNewLink(userLink, userLinkEmID, userLinkCoID);
+                        System.out.println("Would you like to add another link? (y/n)");
+                        answerAddLink = sc.next();
+                    } while (answerAddLink.equalsIgnoreCase("y"));
+                    break;
+            }
+        }while (!answerAdd.equalsIgnoreCase("q"));
 
         for (Link l : arrLink) {
             for (Company c : arrCompany) {
@@ -80,7 +81,6 @@ public class Main {
                 }
             }
         }
-//        System.out.println("Would you like to edit a company or an employee? (type c for company, e for employee)");
 
 
     }
