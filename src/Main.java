@@ -51,10 +51,28 @@ public class Main {
             }
         }while (!answerAdd.equalsIgnoreCase("q"));
 
-//        for (Company c: arrCompany){
-//            System.out.println(c.getCompanyName());
-//        }
         displayText();
+
+        System.out.println("Would you like to edit? c for Company name, e for employee name, q for quit");
+        String answerEditCo;
+        String answerEditEmp;
+        String userEditAnswer = sc.next();
+        switch (userEditAnswer){
+            case "c":
+                do {
+                    editCompany();
+                    System.out.println("Would you like to edit another Company? (y/n)");
+                    answerEditCo = sc.next();
+                }while (answerEditCo.equalsIgnoreCase("y"));
+                break;
+            case "e":
+                do{
+                    editEmployee();
+                    System.out.println("Would you like to edit another Employee? (y/n)");
+                    answerEditEmp = sc.next();
+                }while (answerEditEmp.equalsIgnoreCase("y"));
+                break;
+        }while(!userEditAnswer.equalsIgnoreCase("q"));
 
     }
 
@@ -111,6 +129,34 @@ public class Main {
                 }
             }
         }
+    }
+
+    public static void editCompany(){
+        System.out.println("Please enter the Company ID that you would like to edit: ");
+        int userEditCoID = sc.nextInt();
+
+        for (Link l: arrLink){
+            for (Company c:arrCompany){
+                if (c.getCompanyID()==l.getCoID()){
+                    String userEditCo =sc.next();
+                    userEditCo+=sc.nextLine();
+                    c.setCompanyName(userEditCo);
+                }
+            }
+        }
+
+    }
+    public static void editEmployee(){
+        for (Link l: arrLink){
+            for (Employee e:arrEmployee){
+                if ((e.getEmployeeID())==l.getPeopleID()){
+                    String userEditEmp =sc.next();
+                    userEditEmp+=sc.nextLine();
+                    e.setEmployeeName(userEditEmp);
+                }
+            }
+        }
+
     }
 
 }
